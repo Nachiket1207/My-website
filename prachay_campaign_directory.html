@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prachay Bonds — NCD Campaign Directory</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1F3C;
+    --navy-mid: #1B3A6B;
+    --navy-light: #2A4F8F;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #FDF6E3;
+    --cream: #FAF8F4;
+    --white: #FFFFFF;
+    --text: #1A1A2E;
+    --muted: #6B7A99;
+    --border: rgba(201,168,76,0.2);
+    --shadow: 0 20px 60px rgba(13,31,60,0.15);
+    --glow: 0 0 40px rgba(201,168,76,0.12);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── PARTICLES BG ── */
+  #particles {
+    position: fixed; inset:0; pointer-events:none; z-index:0;
+    overflow:hidden;
+  }
+  .particle {
+    position:absolute; border-radius:50%;
+    background: var(--gold); opacity:0.04;
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0% { transform: translateY(110vh) rotate(0deg); }
+    100% { transform: translateY(-10vh) rotate(720deg); }
+  }
+
+  /* ── LAYOUT ── */
+  .wrapper { position:relative; z-index:1; max-width:1300px; margin:0 auto; padding:0 40px; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden;
+    padding: 80px 0 60px;
+  }
+  .hero::before {
+    content:'';
+    position:absolute; top:-200px; right:-200px;
+    width:700px; height:700px; border-radius:50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:'';
+    position:absolute; bottom:-300px; left:-200px;
+    width:600px; height:600px; border-radius:50%;
+    background: radial-gradient(circle, rgba(27,58,107,0.6) 0%, transparent 70%);
+    pointer-events:none;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items:center; gap:8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--border);
+    padding: 8px 18px; border-radius:100px;
+    font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+    color: var(--gold); margin-bottom:32px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag .dot { width:6px; height:6px; background:var(--gold); border-radius:50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 900; line-height:1.0;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+  .hero h1 .line1 { color: var(--white); display:block; }
+  .hero h1 .line2 {
+    display:block;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+
+  .hero-sub {
+    font-size:18px; color: rgba(255,255,255,0.6); margin-top:24px; line-height:1.7;
+    max-width:580px; animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .hero-stats {
+    display:flex; gap:40px; margin-top:60px; flex-wrap:wrap;
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+  .stat-pill {
+    display:flex; flex-direction:column; gap:4px;
+    padding:20px 32px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius:16px;
+    backdrop-filter:blur(10px);
+    transition: all 0.3s ease;
+  }
+  .stat-pill:hover { background:rgba(201,168,76,0.1); transform:translateY(-4px); border-color: var(--gold); }
+  .stat-num { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--gold); }
+  .stat-label { font-size:12px; color:rgba(255,255,255,0.5); letter-spacing:1px; text-transform:uppercase; }
+
+  .scroll-cta {
+    margin-top:60px; display:flex; align-items:center; gap:12px;
+    color:rgba(255,255,255,0.4); font-size:13px; letter-spacing:1px; text-transform:uppercase;
+    animation: fadeUp 0.8s ease 0.4s both;
+  }
+  .scroll-line { width:60px; height:1px; background:rgba(255,255,255,0.2); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(30px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* ── SECTION TITLE ── */
+  .section { padding: 100px 0; }
+  .section-header { margin-bottom:60px; }
+  .section-label {
+    font-size:11px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gold); font-weight:600; margin-bottom:12px;
+    display:flex; align-items:center; gap:12px;
+  }
+  .section-label::after { content:''; flex:1; max-width:60px; height:1px; background:var(--gold); opacity:0.4; }
+  .section-title {
+    font-family:'Playfair Display',serif; font-size:clamp(32px,4vw,52px); font-weight:700;
+    line-height:1.15; color:var(--white);
+  }
+  .section-title span { color:var(--gold); }
+
+  /* ── DIRECTORY NAV ── */
+  .directory-nav {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:2px; background:rgba(255,255,255,0.04);
+    border:1px solid var(--border); border-radius:24px; overflow:hidden;
+    margin-bottom:80px;
+  }
+  .dir-item {
+    padding:28px 32px;
+    cursor:pointer;
+    transition:all 0.3s ease;
+    border:none; background:transparent;
+    text-align:left; color:var(--white);
+    display:flex; flex-direction:column; gap:8px;
+    position:relative;
+  }
+  .dir-item::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08), transparent);
+    opacity:0; transition:opacity 0.3s ease;
+  }
+  .dir-item:hover::before { opacity:1; }
+  .dir-item:hover { background:rgba(201,168,76,0.06); }
+  .dir-item .dir-num { font-family:'DM Mono',monospace; font-size:11px; color:var(--gold); opacity:0.7; }
+  .dir-item .dir-title { font-weight:600; font-size:15px; }
+  .dir-item .dir-desc { font-size:12px; color:rgba(255,255,255,0.4); }
+  .dir-arrow { margin-top:4px; color:var(--gold); font-size:18px; transition:transform 0.3s; }
+  .dir-item:hover .dir-arrow { transform:translateX(6px); }
+
+  /* ── PLATFORM CARDS ── */
+  .platforms-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px;
+  }
+  .platform-card {
+    border-radius:20px; overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    transition:all 0.4s ease;
+    cursor:pointer;
+    position:relative;
+  }
+  .platform-card:hover { transform:translateY(-8px); box-shadow:var(--shadow), var(--glow); }
+  .platform-card .card-header {
+    padding:28px 28px 20px;
+    display:flex; align-items:center; gap:16px;
+    position:relative;
+  }
+  .platform-icon {
+    width:52px; height:52px; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:24px; flex-shrink:0;
+  }
+  .card-platform-name { font-weight:700; font-size:18px; }
+  .card-platform-tag { font-size:11px; color:rgba(255,255,255,0.5); margin-top:2px; }
+  .card-body { padding:0 28px 28px; }
+  .card-metric-row { display:flex; gap:16px; margin-bottom:20px; flex-wrap:wrap; }
+  .mini-metric { background:rgba(255,255,255,0.06); border-radius:10px; padding:10px 14px; }
+  .mini-metric .m-val { font-weight:700; font-size:16px; color:var(--gold); }
+  .mini-metric .m-key { font-size:10px; color:rgba(255,255,255,0.4); margin-top:2px; letter-spacing:0.5px; }
+  .content-types { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+  .tag { padding:5px 12px; border-radius:100px; font-size:11px; font-weight:600;
+    background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); color:var(--gold-light); }
+  .card-actions { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.8; }
+
+  /* Platform colors */
+  .p-linkedin .card-header { background:linear-gradient(135deg,#0A1628,#0D2B5C); }
+  .p-linkedin .platform-icon { background:rgba(10,102,194,0.3); }
+  .p-instagram .card-header { background:linear-gradient(135deg,#1a0a2e,#2d1145); }
+  .p-instagram .platform-icon { background:rgba(193,53,132,0.3); }
+  .p-whatsapp .card-header { background:linear-gradient(135deg,#0a2010,#0d3a1a); }
+  .p-whatsapp .platform-icon { background:rgba(37,211,102,0.2); }
+  .p-youtube .card-header { background:linear-gradient(135deg,#1a0808,#3a0f0f); }
+  .p-youtube .platform-icon { background:rgba(255,0,0,0.2); }
+  .p-twitter .card-header { background:linear-gradient(135deg,#08111a,#0f1f2e); }
+  .p-twitter .platform-icon { background:rgba(29,161,242,0.2); }
+  .p-google .card-header { background:linear-gradient(135deg,#0d1a0d,#1a2e0a); }
+  .p-google .platform-icon { background:rgba(52,168,83,0.2); }
+
+  /* ── FUNNEL ── */
+  .funnel-container { position:relative; }
+  .funnel-step {
+    display:grid; grid-template-columns:60px 1fr;
+    gap:0; margin-bottom:0; position:relative;
+  }
+  .funnel-step::before {
+    content:''; position:absolute; left:29px; top:60px; bottom:-30px;
+    width:2px; background:linear-gradient(to bottom,var(--gold) 0%,rgba(201,168,76,0.1) 100%);
+    z-index:0;
+  }
+  .funnel-step:last-child::before { display:none; }
+  .step-num-col { display:flex; flex-direction:column; align-items:center; padding-top:16px; }
+  .step-circle {
+    width:42px; height:42px; border-radius:50%; border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'DM Mono',monospace; font-size:14px; font-weight:500; color:var(--gold);
+    background:var(--navy); z-index:1; flex-shrink:0;
+    transition:all 0.3s ease;
+  }
+  .funnel-step:hover .step-circle {
+    background:var(--gold); color:var(--navy); font-weight:700; transform:scale(1.1);
+  }
+  .step-content {
+    padding:16px 0 48px 32px;
+  }
+  .step-platform-tag {
+    display:inline-flex; align-items:center; gap:6px;
+    padding:4px 14px; border-radius:100px; font-size:11px; font-weight:600; letter-spacing:1px;
+    text-transform:uppercase; margin-bottom:12px;
+  }
+  .step-title { font-weight:700; font-size:20px; margin-bottom:8px; color:var(--white); }
+  .step-desc { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:16px; }
+  .step-actions-list {
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .step-action {
+    display:flex; align-items:flex-start; gap:12px;
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+    border-radius:12px; padding:12px 16px;
+    font-size:13px; color:rgba(255,255,255,0.7); line-height:1.5;
+    transition:all 0.3s ease;
+  }
+  .step-action:hover { background:rgba(201,168,76,0.06); border-color:var(--border); }
+  .step-action .action-icon { color:var(--gold); font-size:16px; flex-shrink:0; margin-top:1px; }
+
+  /* ── CONTENT CALENDAR ── */
+  .calendar-grid {
+    display:grid; grid-template-columns:repeat(7,1fr); gap:2px;
+    background:rgba(255,255,255,0.04); border-radius:16px; overflow:hidden;
+    border:1px solid var(--border);
+  }
+  .cal-header { grid-column:1/-1; display:contents; }
+  .cal-day-name {
+    padding:12px 8px; text-align:center;
+    font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--gold); background:rgba(201,168,76,0.08);
+  }
+  .cal-cell {
+    padding:14px 10px; min-height:120px;
+    background:rgba(255,255,255,0.02); border-top:1px solid rgba(255,255,255,0.04);
+    transition:background 0.3s ease;
+  }
+  .cal-cell:hover { background:rgba(255,255,255,0.06); }
+  .cal-cell.active { background:rgba(201,168,76,0.05); border-top:2px solid var(--gold); }
+  .cal-post { font-size:11px; line-height:1.5; color:rgba(255,255,255,0.65); margin-bottom:6px; }
+  .cal-plat-badge {
+    display:inline-block; font-size:9px; font-weight:700; letter-spacing:0.8px;
+    padding:2px 7px; border-radius:4px; margin-bottom:4px;
+  }
+  .badge-li { background:rgba(10,102,194,0.3); color:#4B8FE0; }
+  .badge-ig { background:rgba(193,53,132,0.3); color:#E06FA0; }
+  .badge-wa { background:rgba(37,211,102,0.2); color:#25D366; }
+  .badge-yt { background:rgba(255,0,0,0.2); color:#FF4444; }
+  .badge-tw { background:rgba(29,161,242,0.2); color:#4BB4F0; }
+  .badge-em { background:rgba(201,168,76,0.2); color:var(--gold); }
+
+  /* ── UNIQUE OUTREACH ── */
+  .outreach-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:28px; }
+  .outreach-card {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+    border-radius:20px; padding:32px;
+    transition:all 0.4s ease; position:relative; overflow:hidden;
+  }
+  .outreach-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-light),var(--gold));
+    transform:scaleX(0); transition:transform 0.4s ease;
+    transform-origin:left;
+  }
+  .outreach-card:hover::before { transform:scaleX(1); }
+  .outreach-card:hover { background:rgba(201,168,76,0.04); transform:translateY(-6px); border-color:var(--border); }
+  .outreach-icon {
+    width:56px; height:56px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px; margin-bottom:20px;
+    background:rgba(201,168,76,0.1); border:1px solid var(--border);
+  }
+  .outreach-title { font-weight:700; font-size:18px; margin-bottom:8px; color:var(--white); }
+  .outreach-tag {
+    display:inline-block; font-size:10px; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--gold); background:rgba(201,168,76,0.08);
+    border:1px solid var(--border); padding:4px 10px; border-radius:100px; margin-bottom:14px;
+  }
+  .outreach-desc { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.75; margin-bottom:16px; }
+  .outreach-steps { display:flex; flex-direction:column; gap:6px; }
+  .ostep { font-size:13px; color:rgba(255,255,255,0.7); display:flex; gap:10px; }
+  .ostep::before { content:'→'; color:var(--gold); flex-shrink:0; }
+
+  /* ── MESSAGING TEMPLATES ── */
+  .template-tabs {
+    display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap;
+  }
+  .tab-btn {
+    padding:10px 20px; border-radius:100px; font-size:13px; font-weight:600; cursor:pointer;
+    border:1px solid rgba(255,255,255,0.12); background:transparent; color:rgba(255,255,255,0.5);
+    transition:all 0.3s ease;
+  }
+  .tab-btn:hover { border-color:var(--gold); color:var(--gold); }
+  .tab-btn.active { background:var(--gold); border-color:var(--gold); color:var(--navy); }
+  .template-box {
+    background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08);
+    border-left:3px solid var(--gold); border-radius:16px; padding:28px 32px;
+    display:none; animation:fadeIn 0.4s ease;
+  }
+  .template-box.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  .template-platform-tag {
+    font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold);
+    margin-bottom:16px; display:block;
+  }
+  .template-text {
+    font-size:14px; line-height:1.85; color:rgba(255,255,255,0.75);
+    font-family:'DM Sans',sans-serif;
+    white-space:pre-line;
+  }
+  .template-text em { color:var(--gold-light); font-style:normal; font-weight:600; }
+
+  /* ── KPI GRID ── */
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; }
+  .kpi-card {
+    background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.06);
+    border-radius:16px; padding:28px 24px; text-align:center;
+    transition:all 0.3s ease;
+  }
+  .kpi-card:hover { background:rgba(201,168,76,0.06); border-color:var(--border); transform:scale(1.03); }
+  .kpi-num { font-family:'Playfair Display',serif; font-size:36px; font-weight:700; color:var(--gold); }
+  .kpi-label { font-size:13px; color:rgba(255,255,255,0.5); margin-top:6px; }
+  .kpi-sub { font-size:11px; color:rgba(201,168,76,0.5); margin-top:4px; }
+
+  /* ── FOOTER ── */
+  .footer-bar {
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding:40px 0;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;
+  }
+  .footer-brand { font-family:'Playfair Display',serif; font-size:20px; }
+  .footer-brand span { color:var(--gold); }
+  .footer-note { font-size:12px; color:rgba(255,255,255,0.3); }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity:0; transform:translateY(40px); transition:all 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:768px) {
+    .wrapper { padding:0 20px; }
+    .hero-stats { gap:16px; }
+    .stat-pill { padding:16px 20px; }
+    .stat-num { font-size:28px; }
+    .directory-nav { grid-template-columns:1fr; }
+    .calendar-grid { display:none; }
+    .funnel-step { grid-template-columns:44px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Particles -->
+<div id="particles"></div>
+
+<!-- ══════════════════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="wrapper">
+    <div class="hero-tag"><span class="dot"></span> Campaign Directory 2026</div>
+    <h1>
+      <span class="line1">Prachay Bonds</span>
+      <span class="line2">NCD Campaign</span>
+    </h1>
+    <p class="hero-sub">A complete social media & outreach playbook to generate high-quality investor leads for India's smartest fixed-income instrument.</p>
+    <div class="hero-stats">
+      <div class="stat-pill"><span class="stat-num">13%</span><span class="stat-label">Fixed p.a. Return</span></div>
+      <div class="stat-pill"><span class="stat-num">6</span><span class="stat-label">Platforms Activated</span></div>
+      <div class="stat-pill"><span class="stat-num">12</span><span class="stat-label">Unique Outreach Ideas</span></div>
+      <div class="stat-pill"><span class="stat-num">500+</span><span class="stat-label">Leads / Quarter</span></div>
+    </div>
+    <div class="scroll-cta"><div class="scroll-line"></div> Explore the playbook below</div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ DIRECTORY NAV -->
+<div class="wrapper">
+  <div class="directory-nav reveal">
+    <button class="dir-item" onclick="scrollTo('platforms')">
+      <span class="dir-num">01</span>
+      <span class="dir-title">Platform Strategy</span>
+      <span class="dir-desc">LinkedIn · Instagram · WhatsApp · YouTube · X · Google</span>
+      <span class="dir-arrow">→</span>
+    </button>
+    <button class="dir-item" onclick="scrollTo('funnel')">
+      <span class="dir-num">02</span>
+      <span class="dir-title">Social Media Flow</span>
+      <span class="dir-desc">Step-by-step content funnel across all platforms</span>
+      <span class="dir-arrow">→</span>
+    </button>
+    <button class="dir-item" onclick="scrollTo('calendar')">
+      <span class="dir-num">03</span>
+      <span class="dir-title">Content Calendar</span>
+      <span class="dir-desc">Weekly posting schedule with content themes</span>
+      <span class="dir-arrow">→</span>
+    </button>
+    <button class="dir-item" onclick="scrollTo('outreach')">
+      <span class="dir-num">04</span>
+      <span class="dir-title">Unique Outreach</span>
+      <span class="dir-desc">12 creative ways to reach genuine investors</span>
+      <span class="dir-arrow">→</span>
+    </button>
+    <button class="dir-item" onclick="scrollTo('templates')">
+      <span class="dir-num">05</span>
+      <span class="dir-title">Message Templates</span>
+      <span class="dir-desc">Ready-to-use scripts for every channel</span>
+      <span class="dir-arrow">→</span>
+    </button>
+    <button class="dir-item" onclick="scrollTo('kpis')">
+      <span class="dir-num">06</span>
+      <span class="dir-title">Social KPIs</span>
+      <span class="dir-desc">Targets, metrics & tracking for social channels</span>
+      <span class="dir-arrow">→</span>
+    </button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ 01 PLATFORM STRATEGY -->
+<section class="section" id="platforms">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">01 — Platform Strategy</div>
+      <h2 class="section-title">Where We <span>Show Up</span></h2>
+    </div>
+    <div class="platforms-grid">
+
+      <div class="platform-card p-linkedin reveal">
+        <div class="card-header">
+          <div class="platform-icon">💼</div>
+          <div><div class="card-platform-name">LinkedIn</div><div class="card-platform-tag">Primary B2B Channel</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">5×</div><div class="m-key">Posts/Week</div></div>
+            <div class="mini-metric"><div class="m-val">20/day</div><div class="m-key">New Connects</div></div>
+            <div class="mini-metric"><div class="m-val">HNI+CFO</div><div class="m-key">Audience</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">Thought Leadership</span><span class="tag">NCD Explainers</span><span class="tag">Lead Gen Forms</span><span class="tag">Polls</span>
+          </div>
+          <div class="card-actions">
+            ✦ Sponsored posts targeting Finance professionals<br>
+            ✦ Weekly market insight articles by Girish Lakhotiya<br>
+            ✦ InMail sequences: 3-touch over 10 days<br>
+            ✦ LinkedIn Live: Monthly investor Q&A
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-card p-instagram reveal">
+        <div class="card-header">
+          <div class="platform-icon">📸</div>
+          <div><div class="card-platform-name">Instagram</div><div class="card-platform-tag">Brand Awareness + HNI Lifestyle</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">7×</div><div class="m-key">Posts/Week</div></div>
+            <div class="mini-metric"><div class="m-val">35–60</div><div class="m-key">Age Target</div></div>
+            <div class="mini-metric"><div class="m-val">Reels</div><div class="m-key">Focus Format</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">Reels (60s)</span><span class="tag">Carousels</span><span class="tag">Stories</span><span class="tag">Collab Posts</span>
+          </div>
+          <div class="card-actions">
+            ✦ "13% Return" hook reels with swipe-up to inquiry<br>
+            ✦ "NCD vs FD" carousel — educational, saveable<br>
+            ✦ Behind-the-scenes at investor meets<br>
+            ✦ Festive & milestone posts with NCD CTA
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-card p-whatsapp reveal">
+        <div class="card-header">
+          <div class="platform-icon">💬</div>
+          <div><div class="card-platform-name">WhatsApp</div><div class="card-platform-tag">High Conversion Channel</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">3×</div><div class="m-key">Broadcasts/Week</div></div>
+            <div class="mini-metric"><div class="m-val">60s</div><div class="m-key">Response Time</div></div>
+            <div class="mini-metric"><div class="m-val">API</div><div class="m-key">Automation</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">Broadcast Lists</span><span class="tag">Status Updates</span><span class="tag">Chatbot</span><span class="tag">Video PDFs</span>
+          </div>
+          <div class="card-actions">
+            ✦ 3 opt-in broadcast lists: HNI / Retail / Corporate<br>
+            ✦ Auto-bot: sends brochure on keyword "BONDS"<br>
+            ✦ Monthly interest announcement broadcasts<br>
+            ✦ WhatsApp Status: daily wealth tips
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-card p-youtube reveal">
+        <div class="card-header">
+          <div class="platform-icon">▶️</div>
+          <div><div class="card-platform-name">YouTube</div><div class="card-platform-tag">Education + Trust Building</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">2×</div><div class="m-key">Videos/Month</div></div>
+            <div class="mini-metric"><div class="m-val">8–15min</div><div class="m-key">Length</div></div>
+            <div class="mini-metric"><div class="m-val">Shorts</div><div class="m-key">Also Active</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">NCD Tutorials</span><span class="tag">Investor Stories</span><span class="tag">Webinar Replays</span><span class="tag">Shorts</span>
+          </div>
+          <div class="card-actions">
+            ✦ "What is an NCD? Complete Guide for Indians"<br>
+            ✦ "How I earn ₹50,000/month from Prachay Bonds"<br>
+            ✦ Shorts: 60s daily finance tips<br>
+            ✦ Webinar recordings uploaded with chapters
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-card p-twitter reveal">
+        <div class="card-header">
+          <div class="platform-icon">𝕏</div>
+          <div><div class="card-platform-name">X (Twitter)</div><div class="card-platform-tag">Finance Community + Virality</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">3×</div><div class="m-key">Tweets/Day</div></div>
+            <div class="mini-metric"><div class="m-val">Threads</div><div class="m-key">Key Format</div></div>
+            <div class="mini-metric"><div class="m-val">FinTwit</div><div class="m-key">Community</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">Threads</span><span class="tag">Finance Polls</span><span class="tag">Hot Takes</span><span class="tag">Data Posts</span>
+          </div>
+          <div class="card-actions">
+            ✦ Thread: "FD vs NCD — The truth no one tells you"<br>
+            ✦ Engage with #PersonalFinance & #FinTwit community<br>
+            ✦ Poll: "Where do you park your idle cash?"<br>
+            ✦ Reply to finance influencers with insights
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-card p-google reveal">
+        <div class="card-header">
+          <div class="platform-icon">🔍</div>
+          <div><div class="card-platform-name">Google / YouTube Ads</div><div class="card-platform-tag">High-Intent Lead Capture</div></div>
+        </div>
+        <div class="card-body">
+          <div class="card-metric-row">
+            <div class="mini-metric"><div class="m-val">Search</div><div class="m-key">+ Display</div></div>
+            <div class="mini-metric"><div class="m-val">₹150–250</div><div class="m-key">CPC Target</div></div>
+            <div class="mini-metric"><div class="m-val">Retarget</div><div class="m-key">Always On</div></div>
+          </div>
+          <div class="content-types">
+            <span class="tag">Search Ads</span><span class="tag">Display</span><span class="tag">YouTube Pre-roll</span><span class="tag">Retargeting</span>
+          </div>
+          <div class="card-actions">
+            ✦ Keywords: "best NCD 2026", "fixed income 13%"<br>
+            ✦ Display on Moneycontrol, ET Wealth, ValueResearch<br>
+            ✦ 15s pre-roll: "Earning 7% on your FD? Here's 13%"<br>
+            ✦ Retarget all website & landing page visitors
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 02 SOCIAL MEDIA FLOW -->
+<section class="section" id="funnel" style="background:rgba(255,255,255,0.01); border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">02 — Social Media Flow</div>
+      <h2 class="section-title">The <span>Campaign Funnel</span></h2>
+    </div>
+    <div class="funnel-container">
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">1</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(10,102,194,0.15);color:#4B8FE0;">🔵 LinkedIn + Google Ads</span>
+          <div class="step-title">Awareness — Make the Noise</div>
+          <div class="step-desc">The prospect discovers Prachay Bonds for the first time through targeted ads, organic posts, or a connection's share.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>LinkedIn carousel ad: "Why 10,000+ investors are moving out of FDs in 2026" — ends with "Learn More" button to landing page</div>
+            <div class="step-action"><span class="action-icon">◆</span>Google Search captures: "NCD 13% returns India" → lands on dedicated Prachay Bonds page</div>
+            <div class="step-action"><span class="action-icon">◆</span>YouTube 15s pre-roll on personal finance videos: "Your FD is giving 7%. Ours gives 13%. Monthly."</div>
+            <div class="step-action"><span class="action-icon">◆</span>Instagram Reel: "3 reasons smart investors are choosing NCDs over FDs" — saves & shares drive organic reach</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">2</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(193,53,132,0.15);color:#E06FA0;">🟣 Instagram + X (Twitter)</span>
+          <div class="step-title">Interest — Stop the Scroll</div>
+          <div class="step-desc">The prospect engages with content — saves a post, clicks a story, follows the account. This signals real intent.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>Instagram Story Poll: "Are your investments beating 10% p.a.?" — 'No' leads to swipe-up → lead form</div>
+            <div class="step-action"><span class="action-icon">◆</span>Twitter Thread: "I put ₹10 Lakhs in Prachay Bonds 12 months ago. Here's what happened." — Viral, link to landing page in thread</div>
+            <div class="step-action"><span class="action-icon">◆</span>Instagram Carousel: "NCD vs FD vs Mutual Fund — Full Breakdown [Save This]" — educational, builds trust</div>
+            <div class="step-action"><span class="action-icon">◆</span>LinkedIn Article by Girish Lakhotiya: "The Fixed Income Revolution in India" — thought leadership builds credibility</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">3</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(37,211,102,0.15);color:#25D366;">🟢 WhatsApp + Email</span>
+          <div class="step-title">Capture — Get the Lead</div>
+          <div class="step-desc">Convert interest into a contact. Every social channel drives to a lead capture — form, WhatsApp opt-in, or webinar registration.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>LinkedIn Lead Gen Form: "Get Prachay Bonds Prospectus" — auto-fills from LinkedIn profile, no friction</div>
+            <div class="step-action"><span class="action-icon">◆</span>Instagram/Facebook: "Register for Free Webinar — Smart Fixed Income Investing 2026" → Zoho form</div>
+            <div class="step-action"><span class="action-icon">◆</span>WhatsApp Click-to-Chat link in every bio and post: "Type BONDS to get the product sheet instantly"</div>
+            <div class="step-action"><span class="action-icon">◆</span>Landing page: "Calculate your monthly income from ₹[X] in Prachay Bonds" — interactive calculator + form</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">4</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(201,168,76,0.15);color:var(--gold);">🟡 Email + WhatsApp Sequences</span>
+          <div class="step-title">Nurture — Build Trust</div>
+          <div class="step-desc">Warm the lead with a structured content sequence. Not every prospect invests on day 1 — nurture builds conviction.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>Day 1 Email: Welcome + NCD Product Sheet + "What makes Prachay different" — warm, personal tone</div>
+            <div class="step-action"><span class="action-icon">◆</span>Day 3 WhatsApp: 90-second explainer video "How Prachay Bonds work — in simple terms"</div>
+            <div class="step-action"><span class="action-icon">◆</span>Day 5 Email: Investor story — "How [Name] earns ₹43,000/month from Prachay Bonds" (testimonial)</div>
+            <div class="step-action"><span class="action-icon">◆</span>Day 8 LinkedIn Retargeting Ad: CRISIL rating + safety features — for trust-seeking leads</div>
+            <div class="step-action"><span class="action-icon">◆</span>Day 10 WhatsApp: "You're invited — Live Q&A with our investment team this Saturday"</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">5</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(255,100,50,0.15);color:#FF8060;">🔴 1:1 Sales + CRM</span>
+          <div class="step-title">Qualify — Score & Prioritize</div>
+          <div class="step-desc">Sales team engages directly. BANT qualification happens over a call, DM, or in-person meeting. CRM updated with lead score.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>RM sends personalized ROI calculator: "Based on ₹[X], here's your monthly income from Prachay Bonds"</div>
+            <div class="step-action"><span class="action-icon">◆</span>Calendar invite sent for 30-min product walkthrough over Zoom or in-person at Prachay Pune office</div>
+            <div class="step-action"><span class="action-icon">◆</span>CRM lead scored: Hot (₹5L+ ready now) / Warm (exploring) / Cold (future intent)</div>
+            <div class="step-action"><span class="action-icon">◆</span>Hot leads get VIP invite to exclusive Prachay investor breakfast event</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="funnel-step reveal">
+        <div class="step-num-col"><div class="step-circle">6</div></div>
+        <div class="step-content">
+          <span class="step-platform-tag" style="background:rgba(201,168,76,0.2);color:var(--gold-light);">⭐ Conversion + Referral Loop</span>
+          <div class="step-title">Convert + Multiply — Close & Grow</div>
+          <div class="step-desc">Investor completes KYC and application. Post-investment nurture turns investors into brand ambassadors who refer new leads.</div>
+          <div class="step-actions-list">
+            <div class="step-action"><span class="action-icon">◆</span>Smooth KYC + digital application — completed within 48 hours with dedicated ops support</div>
+            <div class="step-action"><span class="action-icon">◆</span>Welcome WhatsApp + Email: "Welcome to the Prachay Family — your first interest arrives on [date]"</div>
+            <div class="step-action"><span class="action-icon">◆</span>Month 2: Referral ask — "Refer a friend, earn [incentive]" — WhatsApp + Email CTA</div>
+            <div class="step-action"><span class="action-icon">◆</span>Investors share their monthly payout screenshot → organic social proof → new top-of-funnel leads</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 03 CONTENT CALENDAR -->
+<section class="section" id="calendar">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">03 — Content Calendar</div>
+      <h2 class="section-title">Weekly <span>Posting Plan</span></h2>
+    </div>
+    <div class="calendar-grid reveal">
+      <div class="cal-day-name">Mon</div>
+      <div class="cal-day-name">Tue</div>
+      <div class="cal-day-name">Wed</div>
+      <div class="cal-day-name">Thu</div>
+      <div class="cal-day-name">Fri</div>
+      <div class="cal-day-name">Sat</div>
+      <div class="cal-day-name">Sun</div>
+
+      <div class="cal-cell active">
+        <span class="cal-plat-badge badge-li">LinkedIn</span>
+        <div class="cal-post">📊 Market Insight Post — "This week in Indian debt markets"</div>
+        <span class="cal-plat-badge badge-ig">Instagram</span>
+        <div class="cal-post">📸 Motivational quote card with Prachay branding</div>
+      </div>
+      <div class="cal-cell">
+        <span class="cal-plat-badge badge-tw">X (Twitter)</span>
+        <div class="cal-post">🧵 Thread: "FD Rate History 2015–2026 — What changed?"</div>
+        <span class="cal-plat-badge badge-wa">WhatsApp</span>
+        <div class="cal-post">📤 Broadcast: Finance tip of the week</div>
+      </div>
+      <div class="cal-cell active">
+        <span class="cal-plat-badge badge-ig">Instagram</span>
+        <div class="cal-post">🎥 Reel: "What is an NCD? 60-second explainer"</div>
+        <span class="cal-plat-badge badge-li">LinkedIn</span>
+        <div class="cal-post">📝 Thought leadership article by founder</div>
+      </div>
+      <div class="cal-cell">
+        <span class="cal-plat-badge badge-yt">YouTube</span>
+        <div class="cal-post">📹 Full video: "NCD vs FD — Complete Comparison Guide"</div>
+        <span class="cal-plat-badge badge-tw">X (Twitter)</span>
+        <div class="cal-post">📊 Poll: "How much of your portfolio is in fixed income?"</div>
+      </div>
+      <div class="cal-cell active">
+        <span class="cal-plat-badge badge-li">LinkedIn</span>
+        <div class="cal-post">🚀 Lead Gen Ad: "Earn 13% p.a. — Book Free Consultation"</div>
+        <span class="cal-plat-badge badge-ig">Instagram</span>
+        <div class="cal-post">📊 Carousel: "NCD Calculator — What ₹10L earns monthly"</div>
+      </div>
+      <div class="cal-cell">
+        <span class="cal-plat-badge badge-wa">WhatsApp</span>
+        <div class="cal-post">📤 Investor Meet Invite + RSVP link broadcast</div>
+        <span class="cal-plat-badge badge-em">Email</span>
+        <div class="cal-post">📧 Weekly Newsletter: "Prachay Wealth Insights"</div>
+      </div>
+      <div class="cal-cell">
+        <span class="cal-plat-badge badge-ig">Instagram</span>
+        <div class="cal-post">📸 Behind-the-scenes: Team / Office / Investor Meet</div>
+        <span class="cal-plat-badge badge-tw">X (Twitter)</span>
+        <div class="cal-post">🙏 Weekend finance wisdom — community engagement</div>
+      </div>
+    </div>
+
+    <div style="margin-top:40px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px;" class="reveal">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px;">📌 CONTENT PILLARS</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:2;">
+          🎓 Education (NCD basics)<br>
+          💰 Return Proof (ROI posts)<br>
+          🛡️ Trust & Safety (ratings, SEBI)<br>
+          👥 Social Proof (testimonials)<br>
+          📈 Market Context (FD rates, RBI)<br>
+          🎯 Action / CTA (conversion posts)
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px;">⏰ BEST POSTING TIMES</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:2;">
+          LinkedIn: Tue–Thu, 8–10am & 6–8pm<br>
+          Instagram: Mon/Wed/Fri, 7–9pm<br>
+          WhatsApp: Tue/Thu/Sat, 9–11am<br>
+          YouTube: Wednesday & Saturday<br>
+          X/Twitter: Daily, 9am & 5pm<br>
+          Email: Tuesday 8am & Thursday 2pm
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:16px;padding:24px;">
+        <div style="font-size:13px;color:var(--gold);font-weight:600;margin-bottom:12px;">#️⃣ HASHTAG STRATEGY</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:2;">
+          #PrachayBonds #NCDIndia<br>
+          #FixedIncome #SmartInvesting<br>
+          #BeyondFD #13PercentReturns<br>
+          #PuneInvests #IndianInvestor<br>
+          #WealthBuilding #MonthlyIncome<br>
+          #SEBI #NCDAlert
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 04 UNIQUE OUTREACH -->
+<section class="section" id="outreach" style="background:rgba(255,255,255,0.01);border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">04 — Unique Outreach</div>
+      <h2 class="section-title">12 <span>Breakthrough Ideas</span><br>to Reach Genuine Investors</h2>
+    </div>
+    <div class="outreach-grid">
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🧮</div>
+        <div class="outreach-tag">Viral Tool</div>
+        <div class="outreach-title">Interactive NCD Income Calculator</div>
+        <div class="outreach-desc">Build a shareable "What will ₹X earn monthly at 13%?" web calculator. People love calculators — they screenshot and share.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Embed on website + share on all social channels</div>
+          <div class="ostep">Add "Email me my results" — captures lead email</div>
+          <div class="ostep">Run as Instagram Story interactive sticker</div>
+          <div class="ostep">Share in WhatsApp groups — goes viral organically</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🎙️</div>
+        <div class="outreach-tag">Authority Builder</div>
+        <div class="outreach-title">Finance Podcast Blitz</div>
+        <div class="outreach-desc">Pitch Girish Lakhotiya as a guest on top Indian personal finance podcasts. One episode = thousands of pre-qualified listeners.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Target: Paisa Vaisa, Naren's Corner, ET Money Podcast</div>
+          <div class="ostep">Topic: "The NCD Revolution — Why India's rich are ditching FDs"</div>
+          <div class="ostep">Each episode drives podcast listeners to landing page</div>
+          <div class="ostep">Repurpose clips as Reels and X threads</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🏘️</div>
+        <div class="outreach-tag">Hyperlocal Outreach</div>
+        <div class="outreach-title">Premium Society WhatsApp Blitz</div>
+        <div class="outreach-desc">Gain access to Pune's premium housing society WhatsApp groups. A single message to 500 HNI residents is worth 1,000 cold ads.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Target: Koregaon Park, Kalyani Nagar, Baner, Aundh societies</div>
+          <div class="ostep">Connect with society RWA admin or president first</div>
+          <div class="ostep">Offer a free "Financial Planning for Society Residents" session</div>
+          <div class="ostep">Convert session attendees to NCD leads immediately</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🤝</div>
+        <div class="outreach-tag">Partner Program</div>
+        <div class="outreach-title">The Prachay Ambassador Network</div>
+        <div class="outreach-desc">Turn your existing investors into your biggest lead generation engine. A satisfied investor's referral converts 5x better than any ad.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Launch "Prachay Ambassador" program with referral rewards</div>
+          <div class="ostep">Give ambassadors a unique referral link to track leads</div>
+          <div class="ostep">Monthly leaderboard with top referrer recognition</div>
+          <div class="ostep">Exclusive VIP event invites for top ambassadors</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">📱</div>
+        <div class="outreach-tag">Platform Hack</div>
+        <div class="outreach-title">Wint Wealth / Grip Invest Co-listing</div>
+        <div class="outreach-desc">List Prachay NCDs on established fixed-income investment platforms. Access their 3-5 lakh pre-qualified, KYC-complete HNI users.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Platforms: Wint Wealth, Grip Invest, TheFixedIncome.com</div>
+          <div class="ostep">These investors already understand NCDs — zero education cost</div>
+          <div class="ostep">Co-branded email blast to platform's investor database</div>
+          <div class="ostep">Featured placement drives instant qualified applications</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🎓</div>
+        <div class="outreach-tag">Education-Led</div>
+        <div class="outreach-title">"Corporate Finance Wellness" Program</div>
+        <div class="outreach-desc">Partner with Pune IT parks and large corporates to deliver free 45-min financial wellness sessions to employees. Captive audience of salaried HNIs.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Target: Infosys, Wipro, TCS, Persistent campuses in Pune</div>
+          <div class="ostep">Session topic: "Building Passive Income While Working 9-to-5"</div>
+          <div class="ostep">NCD presented as one of 3 investment options (non-pushy)</div>
+          <div class="ostep">Collect opt-in leads via QR code survey at end of session</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">📰</div>
+        <div class="outreach-tag">Content SEO</div>
+        <div class="outreach-title">Rank for "Best NCD India" on Google</div>
+        <div class="outreach-desc">Create a definitive SEO article: "Best NCDs in India 2026 — Full Comparison." Rank on Google and capture high-intent organic traffic 24/7.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Long-form guide (3000+ words) comparing top NCDs</div>
+          <div class="ostep">Include Prachay Bonds prominently with honest comparison</div>
+          <div class="ostep">Target keywords: "NCD 13% India", "secured debenture 2026"</div>
+          <div class="ostep">Guest post version on Moneycontrol, Mint, Economic Times</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🏌️</div>
+        <div class="outreach-tag">HNI Exclusive</div>
+        <div class="outreach-title">Golf Club & Sports Club NCD Activations</div>
+        <div class="outreach-desc">Pune's HNIs spend leisure time at premium sports clubs. A branded presence at Poona Club, BCC, or Turf Club puts Prachay in front of the highest-value prospects.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Sponsor a golf tournament or cricket match at premium clubs</div>
+          <div class="ostep">Set up a "Prachay Finance Corner" at the event</div>
+          <div class="ostep">Branded refreshments — "Every sip earns 13%!" playful CTA</div>
+          <div class="ostep">Collect visiting cards → follow-up within 24 hours</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🎥</div>
+        <div class="outreach-tag">Influencer Collab</div>
+        <div class="outreach-title">Finance Influencer Partnerships</div>
+        <div class="outreach-desc">Partner with SEBI-registered investment advisors and finance creators who have authentic HNI followings. Authenticity > reach.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Target: Shankar Nath, Akshat Shrivastava, CA Rachana Ranade</div>
+          <div class="ostep">Avoid lifestyle influencers — seek pure finance/CA creators</div>
+          <div class="ostep">Honest product review format > paid promotion</div>
+          <div class="ostep">Track leads via influencer-specific landing page URL</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">📦</div>
+        <div class="outreach-tag">Offline Digital</div>
+        <div class="outreach-title">QR Code Premium Zone Blitz</div>
+        <div class="outreach-desc">Place elegant branded QR standees at high-footfall premium locations. When a wealthy person scans, they self-qualify as an interested prospect.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Locations: Luxury car showrooms, airport lounges, premium cafes</div>
+          <div class="ostep">Standee design: Minimalist gold — "Earn 13%. Scan to know how."</div>
+          <div class="ostep">QR → WhatsApp opt-in → instant brochure delivery</div>
+          <div class="ostep">Track scans by location to identify highest-performing zones</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">🗞️</div>
+        <div class="outreach-tag">PR & Media</div>
+        <div class="outreach-title">Financial Media PR Push</div>
+        <div class="outreach-desc">Strategic media placement in ET Wealth, Mint, BusinessLine positions Prachay as a credible institution — not just an advertiser.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Press releases: NCD launch, CRISIL upgrade, milestone AUM</div>
+          <div class="ostep">Op-ed by Girish: "Why India needs better fixed-income options"</div>
+          <div class="ostep">Be a quoted expert in "Best NCD of 2026" comparison articles</div>
+          <div class="ostep">Secure feature in Pune Mirror / Sakal for local credibility</div>
+        </div>
+      </div>
+
+      <div class="outreach-card reveal">
+        <div class="outreach-icon">⚡</div>
+        <div class="outreach-tag">Conversion Hack</div>
+        <div class="outreach-title">"Swap Your FD" Direct Mail Campaign</div>
+        <div class="outreach-desc">Send a physical, premium mailer to 1,000 targeted HNIs with an FD maturity reminder and Prachay Bonds comparison. Physical mail stands out in a digital world.</div>
+        <div class="outreach-steps">
+          <div class="ostep">Target list: CAs share client FD maturity dates (anonymous)</div>
+          <div class="ostep">Premium envelope, gold foil print — premium first impression</div>
+          <div class="ostep">Include: hand-signed note from Girish + NCD brochure + QR</div>
+          <div class="ostep">Follow-up call 3 days after mail confirmed delivered</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 05 TEMPLATES -->
+<section class="section" id="templates">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">05 — Message Templates</div>
+      <h2 class="section-title">Ready-to-Use <span>Scripts</span></h2>
+    </div>
+    <div class="template-tabs reveal">
+      <button class="tab-btn active" onclick="showTemplate('li')">LinkedIn DM</button>
+      <button class="tab-btn" onclick="showTemplate('ig')">Instagram DM</button>
+      <button class="tab-btn" onclick="showTemplate('wa')">WhatsApp</button>
+      <button class="tab-btn" onclick="showTemplate('em')">Email</button>
+      <button class="tab-btn" onclick="showTemplate('ca')">CA Partner Pitch</button>
+    </div>
+
+    <div class="template-box active" id="tmpl-li">
+      <span class="template-platform-tag">🔵 LinkedIn DM — Cold Outreach (HNI / Business Owner)</span>
+      <div class="template-text">Hi <em>[First Name]</em>,
+
+Noticed your work at <em>[Company]</em> — impressive what you've built in <em>[industry]</em>.
+
+I'm <em>[Your Name]</em> from Prachay Group, a Pune-based financial institution with ₹271Cr+ in assets under management.
+
+We've just opened our <em>Prachay Bonds (NCD)</em> — a SEBI-regulated, listed, secured debenture offering:
+
+→ <em>13% p.a. fixed return</em>
+→ Monthly interest payouts (direct to your bank)
+→ Listed on NSE/BSE — transparent and liquid
+→ Rated by CRISIL, managed by an RBI-registered NBFC
+
+Given your background, I thought this might be relevant for deploying surplus capital at a far better yield than traditional FDs.
+
+Would you be open to a quick 15-minute call this week? I'll share our full prospectus and a personalized return estimate.
+
+— <em>[Your Name]</em>, Prachay Group</div>
+    </div>
+
+    <div class="template-box" id="tmpl-ig">
+      <span class="template-platform-tag">🟣 Instagram DM — After Story Engagement</span>
+      <div class="template-text">Hey <em>[Name]</em>! 👋
+
+Saw you voted on our story — so I thought I'd drop you a quick message.
+
+If your FDs or investments aren't hitting 10%+ p.a., you might want to look at what we're offering:
+
+<em>Prachay Bonds — 13% Fixed Return | Monthly Payouts | Listed on NSE</em>
+
+It's not a risky market instrument. It's a secured, SEBI-regulated NCD backed by our NBFC's real estate loan book.
+
+Want me to send you the full product sheet? Takes 2 mins to read and the numbers speak for themselves. 📊
+
+Just reply "YES" and I'll WhatsApp it to you right away!</div>
+    </div>
+
+    <div class="template-box" id="tmpl-wa">
+      <span class="template-platform-tag">🟢 WhatsApp Broadcast — Existing Network</span>
+      <div class="template-text">🏦 *Prachay Bonds — Now Open for Investment*
+
+Is your FD still giving you 6–7%? While you're being loyal to your bank, smart investors have quietly moved to a better option.
+
+*Prachay Bonds (NCD) — India's Secured, Listed Debenture:*
+
+✅ *13% p.a.* Fixed Return — no market risk
+✅ Monthly interest — straight to your account
+✅ Listed on NSE/BSE — full transparency
+✅ SEBI Regulated + CRISIL Rated + RBI-Registered NBFC
+
+🎯 Earn ₹10,833/month on every ₹10 Lakhs invested
+
+📄 Reply *"BONDS"* to get the full product sheet instantly.
+📞 Call us: <em>[Phone Number]</em>
+🌐 Learn more: prachay.com
+
+— Team Prachay | Your Finance Partners 🙏</div>
+    </div>
+
+    <div class="template-box" id="tmpl-em">
+      <span class="template-platform-tag">📧 Email — Drip Sequence Day 1 (Post Lead Capture)</span>
+      <div class="template-text">Subject: <em>Your ₹10 Lakhs can earn ₹10,833 every month — here's how</em>
+
+Hi <em>[First Name]</em>,
+
+Thank you for your interest in Prachay Bonds.
+
+Most investors are surprised to learn that their money can earn nearly double the returns of a bank FD — with monthly payouts and full SEBI regulatory protection.
+
+Here's what makes Prachay Bonds different:
+
+🔷 <em>13% per annum, fixed</em> — not market-linked, not variable
+🔷 Monthly interest credited directly to your bank account
+🔷 Secured NCD — backed by real assets, not just a promise
+🔷 Listed on NSE/BSE — you can see every transaction publicly
+
+I've attached our full product brochure and an ROI comparison sheet.
+
+One quick question: <em>How much surplus are you looking to invest over the next 30–60 days?</em> Just reply to this email and I'll send you a personalised return estimate within the hour.
+
+Looking forward to being your growth partner.
+
+Warm regards,
+<em>[Your Name]</em>
+Relationship Manager — Prachay Group
+📞 <em>[Phone]</em> | prachay.com</div>
+    </div>
+
+    <div class="template-box" id="tmpl-ca">
+      <span class="template-platform-tag">🤝 CA Partner Pitch — Referral Program Invite</span>
+      <div class="template-text">Dear <em>[CA Name]</em>,
+
+I hope this message finds you well.
+
+I'm reaching out from Prachay Group — you may know us from our work in corporate debt and real estate lending in Pune. We are an RBI-registered NBFC with ₹271Cr+ in AUM and a CRISIL-rated NCD currently open for investment.
+
+I'd like to extend an invitation to join our <em>Prachay CA Partner Program</em>.
+
+*Why this matters for your clients:*
+Your clients with FD-heavy portfolios are likely earning 6–7% p.a. Prachay Bonds offer them 13% p.a. fixed, with monthly payouts — through a SEBI-regulated, listed instrument.
+
+*What we offer our CA partners:*
+→ Attractive referral fee per successful investment (details on call)
+→ Co-branded client pitch materials — ready to use
+→ Quarterly product briefings with our investment team
+→ Priority support for your clients' queries and applications
+
+I'd love to schedule a 20-minute briefing call at your convenience to walk you through the product and the partnership structure.
+
+Would <em>[Day/Time]</em> work for you?
+
+Warm regards,
+<em>[Your Name]</em>
+Prachay Group | <em>[Phone]</em> | prachay.com</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════ 06 KPIs -->
+<section class="section" id="kpis" style="background:rgba(255,255,255,0.01);border-top:1px solid rgba(255,255,255,0.04);">
+  <div class="wrapper">
+    <div class="section-header reveal">
+      <div class="section-label">06 — Social KPIs</div>
+      <h2 class="section-title">Measure <span>What Matters</span></h2>
+    </div>
+    <div class="kpi-grid reveal">
+      <div class="kpi-card"><div class="kpi-num">1K+</div><div class="kpi-label">LinkedIn Followers/Month</div><div class="kpi-sub">Organic + Paid</div></div>
+      <div class="kpi-card"><div class="kpi-num">30%</div><div class="kpi-label">Email Open Rate</div><div class="kpi-sub">Target minimum</div></div>
+      <div class="kpi-card"><div class="kpi-num">5%</div><div class="kpi-label">Instagram Engagement</div><div class="kpi-sub">Saves + Shares priority</div></div>
+      <div class="kpi-card"><div class="kpi-num">20%</div><div class="kpi-label">WhatsApp Response Rate</div><div class="kpi-sub">Per broadcast</div></div>
+      <div class="kpi-card"><div class="kpi-num">200+</div><div class="kpi-label">Webinar Registrations</div><div class="kpi-sub">Per event</div></div>
+      <div class="kpi-card"><div class="kpi-num">₹150</div><div class="kpi-label">Google CPC Max</div><div class="kpi-sub">Per qualified click</div></div>
+      <div class="kpi-card"><div class="kpi-num">3%</div><div class="kpi-label">Landing Page CVR</div><div class="kpi-sub">Visitor → Lead</div></div>
+      <div class="kpi-card"><div class="kpi-num">500+</div><div class="kpi-label">Leads / Quarter</div><div class="kpi-sub">All channels combined</div></div>
+      <div class="kpi-card"><div class="kpi-num">15%</div><div class="kpi-label">Lead → Investor CVR</div><div class="kpi-sub">End funnel conversion</div></div>
+      <div class="kpi-card"><div class="kpi-num">30+</div><div class="kpi-label">Referrals / Quarter</div><div class="kpi-sub">Ambassador program</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="wrapper">
+  <div class="footer-bar">
+    <div class="footer-brand">Prachay <span>Group</span></div>
+    <div class="footer-note">Prachay Capital Limited · 14th Floor, Next Gen Avenue, Senapati Bapat Rd, Pune · info@prachay.com · prachay.com<br>This document is confidential and for internal use only. Subject to SEBI Regulations. Not an offer or solicitation.</div>
+  </div>
+</div>
+
+<script>
+// Particles
+const container = document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p = document.createElement('div');
+  p.className='particle';
+  const size = Math.random()*60+20;
+  p.style.cssText=`width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${12+Math.random()*20}s;animation-delay:-${Math.random()*20}s`;
+  container.appendChild(p);
+}
+
+// Smooth scroll
+function scrollTo(id){
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// Reveal on scroll
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Template tabs
+function showTemplate(key){
+  document.querySelectorAll('.template-box').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tmpl-'+key).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
